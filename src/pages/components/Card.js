@@ -9,7 +9,7 @@ const Card = ({id,image, name, description, city, category}) => {
         <div className="p-3">
         <h3 className="font-bold">{name} - {city}</h3>
         <span>{category}</span>
-        <p>{description}</p>
+        <p className="truncate">{description}</p>
         <div className=" my-2">
         <Link href={`/lawyer/${id}`} className="p-2  bg-stone-400 hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 hover:text-white rounded  font-bold  text-base  ">Consultar gratis</Link>
 

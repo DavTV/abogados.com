@@ -36,17 +36,10 @@ const ListLawyer = () => {
             <br/>
             <br/>
             <br/>
-            <div className="flex justify-end flex-wrap">
-                <p className="text-blue-700 font-bold text-3xl">abogados.com</p>
+            <div className="flex justify-between flex-wrap">
+                <p className="text-sky-700 font-bold text-3xl">abogados.com</p>
                 <div>
-                {/* <span className="mx-1">Desplegar</span> */}
-                {/* <select className="p-3" onChange={(e)=>{setPageShow(parseInt(e.target.value))}} >
-                    {
-                      list.map((item,index)=>{
-                          return <option key={index} value={item}>{item}</option>
-                      })
-                    }
-                </select>     */}
+            
                 <button className="mx-1 my-4"onClick={()=>{setData(dataContext.lawyers)}} >Ver todos los abogados</button>
                 </div>
             </div>
@@ -58,7 +51,7 @@ const ListLawyer = () => {
                         // console.log(lawyers,"city")
                         currentData.length < 1 && <div className="text-center  text-2xl my-4 w-full"> <p>Aùn no hay usuarios registrados</p></div> 
                     }
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     {
                         // console.log(lawyers,"city")
 
