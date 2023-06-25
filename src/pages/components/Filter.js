@@ -6,7 +6,7 @@ const Filter = ({setDataFilter,setCityRouter}) => {
     return ( 
         <div className="w-full bg-sky-700 p-3 my-8 ">
             <form className="text-center" onSubmit={handleSubmit}>
-                <select className="py-2 px-3 mx-1 my-4 w-80 cursor-pointer" onChange={(e)=>{setCategorySelect(e.target.value)}}>
+                <select className="py-2 px-3 mx-1 my-4 w-full md:w-80  cursor-pointer" onChange={(e)=>{setCategorySelect(e.target.value)}}>
                     <option value="">Seleciona que buscas</option>
                     {
                         categorys.map((category,index)=>{
@@ -16,7 +16,7 @@ const Filter = ({setDataFilter,setCityRouter}) => {
                     }
                     
                 </select>
-                <select className="py-2 px-3 mx-1 my-4 w-80 cursor-pointer" onChange={(e)=>{setCitySelect(e.target.value)}} >
+                <select className="py-2 px-3 mx-1 my-4 w-full md:w-80   cursor-pointer" onChange={(e)=>{setCitySelect(e.target.value)}} >
                     <option value="">Seleciona Lugar</option>
                     {
                         citys.map((city)=>{
@@ -26,7 +26,7 @@ const Filter = ({setDataFilter,setCityRouter}) => {
                     }
                 </select>
 
-                <button className="p-2 bg-stone-400  hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 text-white rounded mx-1 font-bold">Buscar</button>
+                <button className="p-2 bg-stone-400  hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 text-white rounded mx-1 font-bold w-full md:w-20">Buscar</button>
             </form>
         </div>
      );

@@ -36,8 +36,8 @@ const ListLawyer = () => {
             <br/>
             <br/>
             <br/>
-            <div className="flex justify-between flex-wrap">
-                <p className="text-blue-700 font-bold text-3xl"><Link href="/">abogados.com</Link></p>
+            <div className="flex justify-end flex-wrap">
+                <p className="text-blue-700 font-bold text-3xl">abogados.com</p>
                 <div>
                 {/* <span className="mx-1">Desplegar</span> */}
                 {/* <select className="p-3" onChange={(e)=>{setPageShow(parseInt(e.target.value))}} >
@@ -47,7 +47,7 @@ const ListLawyer = () => {
                       })
                     }
                 </select>     */}
-                <button className="mx-1"onClick={()=>{setData(dataContext.lawyers)}} >Ver todos los abogados</button>
+                <button className="mx-1 my-4"onClick={()=>{setData(dataContext.lawyers)}} >Ver todos los abogados</button>
                 </div>
             </div>
             <h2 className="text-sky-700 font-bold text-5xl text-center my-8">Busca tu abogado por departamento</h2>

@@ -5,7 +5,7 @@ import Card from "./Card";
 const SliderCard = ({data}) => {
     var settings = {
         dots: true,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,
@@ -21,8 +21,8 @@ const SliderCard = ({data}) => {
           {
               breakpoint: 700,
               settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2
+                  slidesToShow: 1,
+                  slidesToScroll: 1
               }
           }
   

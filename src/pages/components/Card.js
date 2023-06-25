@@ -11,7 +11,7 @@ const Card = ({id,image, name, description, city, category}) => {
         <span>{category}</span>
         <p>{description}</p>
         <div className=" my-2">
-        <Link href={`/lawyer/${id}`} className="p-2 bg-stone-400 hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 hover:text-white rounded  font-bold  text-base  ">Consultar gratis</Link>
+        <Link href={`/lawyer/${id}`} className="p-2  bg-stone-400 hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 hover:text-white rounded  font-bold  text-base  ">Consultar gratis</Link>
 
         </div>
         </div>

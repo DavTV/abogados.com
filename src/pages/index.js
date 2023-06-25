@@ -11,7 +11,7 @@ export default function Home() {
   const {citys, categorys} = useFilter();
   return (
     <>
-    <div className=" h-3/6 overflow-hidden bg-[url('/portada.webp')] bg-cover"  >
+    <div className=" h-4/6 overflow-hidden bg-[url('/portada.jpeg')] bg-cover"  >
       <div className='cortina w-full h-full flex flex-col justify-start items-center'>
         {/* <Image src="" width="500" height="500"   alt="portada"/> */}
         <div className='text-center text-white py-4 my-8'>
