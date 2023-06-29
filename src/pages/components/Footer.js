@@ -1,6 +1,9 @@
 const Footet = () => {
     return ( 
-        <h2>footer</h2>
+        <div className="container mx-auto p-4 bg-sky-700">
+            <h2>footer</h2>
+
+        </div>
      );
 }
  

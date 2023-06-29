@@ -47,7 +47,7 @@ export default function Home() {
             {
               citys.map((city, index)=>{
                 if(citys.length/2 > index)
-                return <li className='my-2 tracking-wider  duration-200 hover:scale-90 hover:text-sky-700'><Link href= {`/listLawyer/${city}`}>   Abogado  Notario  en   {city} </Link></li>
+                return <li className='my-2 tracking-wider  duration-200 hover:scale-90 hover:text-sky-700'><Link href= {`/listLawyer/${city}`}>   Abogado y Notario  en   {city} </Link></li>
               })
             }
           </ul>
@@ -55,7 +55,7 @@ export default function Home() {
             {
               citys.map((city, index)=>{
                 if(citys.length/2 < index)
-                return <li className='my-2 tracking-wider   duration-200 hover:scale-90 hover:text-sky-700  '><Link href= {`/listLawyer/${city}`}>   Abogado  Notario  en   {city} </Link></li>
+                return <li className='my-2 tracking-wider   duration-200 hover:scale-90 hover:text-sky-700  '><Link href= {`/listLawyer/${city}`}>   Abogado y Notario  en   {city} </Link></li>
               })
             }
           </ul>
