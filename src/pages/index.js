@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Filter from './components/Filter'
 import SliderCard from './components/SliderCard'
