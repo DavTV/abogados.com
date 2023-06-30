@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import { useState } from 'react';
 import Layout from './layout'
+import 'bootswatch/dist/lux/bootstrap.css';
 
 export default function App({ Component, pageProps }) {
   const [scrollTop, setScrollTop] = useState(0);

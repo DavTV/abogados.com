@@ -2,8 +2,7 @@ import Footet from "./components/Footer";
 import Header from "./components/Header";
 import { useState} from 'react';
 import { MyContext } from "../context/dataContext";
-import "../styles/globals.css"
-import 'bootswatch/dist/lux/bootstrap.css';
+// import "../styles/globals.css"
 const Layout = ({children}) => {
     const [data, setdata] = useState({
         dataCategorys: [

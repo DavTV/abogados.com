@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Footet = () => {
     return ( 
-        <div className="container-lg row bg-info text-white p-4">
+        <div className="container-lg mx-auto row bg-info text-white p-4">
                 <div className="col-6 col-md-4">
                     <p>Políticas y privacidad</p>
                 </div>
