@@ -1,4 +1,4 @@
-import { usePagination } from "@/hook/usePagination";
+// import { usePagination } from "@/hook/usePagination";
 import { MyContext } from "@/context/dataContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
@@ -32,37 +32,35 @@ const ListLawyer = () => {
             console.log(dataFilter  ,"datfilter")
     }, [dataFilter]);
     return ( 
-        <div className="mt-8">
-            <br/>
-            <br/>
-            <br/>
-            <div className="flex justify-between flex-wrap">
-                <p className="text-sky-700 font-bold text-3xl">abogados.com</p>
+        <div className="mt-5 p-3">
+     
+            <div className="d-flex justify-content-between flex-wrap">
+                {/* <p className="">abogados.com</p> */}
+                <p>Abogados y Notarios en el Salvador, <span>{cityRouter}</span></p>       
                 <div>
             
-                <button className="mx-1 my-4"onClick={()=>{setData(dataContext.lawyers)}} >Ver todos los abogados</button>
+                <button className="btn btn-primary"onClick={()=>{setData(dataContext.lawyers)}} >Ver todos los abogados</button>
                 </div>
             </div>
-            <h2 className="text-sky-700 font-bold text-5xl text-center my-8">Busca tu abogado por departamento</h2>
+            <h2 className="text-info my-5 text-center ">Busca tu abogado por departamento</h2>
             <Filter setDataFilter={setDataFilter} setCityRouter={setCityRouter}/>
             <div>
-                <p className="text-sky-700  text-5xl text-center my-8" >Abogados y Notarios en el Salvador, <span>{cityRouter}</span></p>
                     {
                         // console.log(lawyers,"city")
-                        currentData.length < 1 && <div className="text-center  text-2xl my-4 w-full"> <p>Aùn no hay usuarios registrados</p></div> 
+                        currentData.length < 1 && <div className="text-center  w-100 "> <p>Aùn no hay usuarios registrados</p></div> 
                     }
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="row">
                     {
                         // console.log(lawyers,"city")
 
                         currentData.map((lawyer)=>{
                             
-                                return <Card name={lawyer.name} category={lawyer.category} description={lawyer.description} key={lawyer.id} id={lawyer.id} city={lawyer.city} />
+                                return <div className="col-12 col-md-3"> <Card name={lawyer.name} category={lawyer.category} description={lawyer.description} key={lawyer.id} id={lawyer.id} city={lawyer.city} /></div>
                             
                         })
                     }
                 </div>
-                <div className="flex justify-end">
+                <div className="d-flex justify-content-end">
 
                 <Paginator
           totalRecords={data.length}

@@ -2,7 +2,8 @@ import Footet from "./components/Footer";
 import Header from "./components/Header";
 import { useState} from 'react';
 import { MyContext } from "../context/dataContext";
-
+import "../styles/globals.css"
+import 'bootswatch/dist/lux/bootstrap.css';
 const Layout = ({children}) => {
     const [data, setdata] = useState({
         dataCategorys: [
@@ -282,10 +283,13 @@ const Layout = ({children}) => {
 
     return ( 
         <>
+        <div className="position-sticky top-0 z-1">
             <Header />
+
+        </div>
             <MyContext.Provider value={data}>
 
-                <main className="container p-0 mx-auto" >
+                <main className="container-lg p-0" >
                     {children}
                 </main>
             </MyContext.Provider>

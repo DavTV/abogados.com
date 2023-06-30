@@ -7,22 +7,22 @@ const SliderTestimone = ({data}) => {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         autoplaySpeed: 2000,
         responsive: [
           {
               breakpoint: 1000,
               settings: {
-                  slidesToShow: 4,
-                  slidesToScroll: 4,
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
               }
           },
           {
               breakpoint: 700,
               settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2
+                  slidesToShow: 1,
+                  slidesToScroll: 1
               }
           }
   

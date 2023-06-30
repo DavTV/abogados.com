@@ -1,7 +1,20 @@
+import Image from "next/image";
+import Link from "next/link";
 const Footet = () => {
     return ( 
-        <div className="container mx-auto p-4 bg-sky-700">
-            <h2>footer</h2>
+        <div className="container-lg row bg-info text-white p-4">
+                <div className="col-6 col-md-4">
+                    <p>Políticas y privacidad</p>
+                </div>
+                <div className="col-6 col-md-4">
+                    <p>Terminos y condiciones</p>
+                </div>
+                <div className="col-6 col-md-2">
+                    <p>Referencia de responsabilidad</p>
+                </div>
+                <div className="col-6 col-md-2">
+                <p className="text-white font-bold text-3xl"><Link href="/"><Image src="/logo.png" width="150" height="70" /></Link></p>
+                </div>
 
         </div>
      );

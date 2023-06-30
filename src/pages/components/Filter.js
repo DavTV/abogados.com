@@ -4,29 +4,38 @@ const Filter = ({setDataFilter,setCityRouter}) => {
     const {citys, categorys,handleSubmit,setCategorySelect,setCitySelect} = useFilter(setDataFilter,setCityRouter);
 
     return ( 
-        <div className="w-full bg-sky-700 p-3 my-8 ">
+        <div className=" p-3 my-8 container bg-info my-5">
             <form className="text-center" onSubmit={handleSubmit}>
-                <select className="py-2 px-3 mx-1 my-4 w-full md:w-80  cursor-pointer" onChange={(e)=>{setCategorySelect(e.target.value)}}>
-                    <option value="">Seleciona que buscas</option>
-                    {
-                        categorys.map((category,index)=>{
+                <div className="row justify-content-center ">
+                <div className="my-2 col-12 col-md-5 ">
 
-                            return <option value={category} key={index} >{category}</option>
-                        })
-                    }
-                    
-                </select>
-                <select className="py-2 px-3 mx-1 my-4 w-full md:w-80   cursor-pointer" onChange={(e)=>{setCitySelect(e.target.value)}} >
-                    <option value="">Seleciona Lugar</option>
-                    {
-                        citys.map((city)=>{
+                    <select className="form-select" onChange={(e) => { setCategorySelect(e.target.value) }}>
+                        <option value="">Seleciona que buscas</option>
+                        {
+                            categorys.map((category, index) => {
 
-                            return <option value={city}>{city}</option>
-                        })
-                    }
-                </select>
+                                return <option value={category} key={index} >{category}</option>
+                            })
+                        }
 
-                <button className="p-2 bg-stone-400  hover:bg-stone-500 duration-200 hover:shadow-md hover:scale-90 text-white rounded mx-1 font-bold w-full md:w-20">Buscar</button>
+                    </select>
+                </div>
+                <div className="my-2 col-12 col-md-5">
+                    <select className=" form-select" onChange={(e) => { setCitySelect(e.target.value) }} >
+                        <option value="">Seleciona Lugar</option>
+                        {
+                            citys.map((city) => {
+
+                                return <option value={city}>{city}</option>
+                            })
+                        }
+                    </select>
+                </div>
+                <div className="my-2 col-12 col-md-2">
+                    <button className=" btn btn-primary ">Buscar</button>
+
+                </div>
+                </div>
             </form>
         </div>
      );

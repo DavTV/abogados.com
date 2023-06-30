@@ -1,10 +1,10 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
 html{
-    font-family: 'Bree Serif', serif;
+    font-family: 'Bree Serif', serif !important;
 }
 .cortina{
     background-color: rgba(29, 78 ,216, .5) !important;
@@ -13,4 +13,35 @@ html{
     /* background-color: blue !important;
     border-radius:50% ; */
     display: none !important;
+}
+.bg-foto{
+    background-image: url("/portada.jpeg") !important;
+    height: 100vh;
+    background-size: cover;
+}
+.truncate-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .container-lg{
+      max-width:1500px !important;
+  }
+  .list-none{
+      list-style: none;
+     
+  }
+.doble-border{
+    border-style: double !important;
+    
+}
+
+.title{
+    font-size: 200% !important;
+}
+@media (min-width:700px) {
+    
+    .title{
+        font-size: 400% !important;
+    }
 }

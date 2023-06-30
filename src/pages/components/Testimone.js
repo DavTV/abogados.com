@@ -1,7 +1,7 @@
 const Testimone = () => {
     return (  
-        <div className="bg-gray-300 mx-1 p-3">
-            <div className="flex justify-between p-2">
+        <div className="border border-info mx-1 p-3">
+            <div className="d-flex justify-content-between bg-info text-white my-2 p-2">
                 <span>Nombre</span>
                 <span>
                     5⭐
