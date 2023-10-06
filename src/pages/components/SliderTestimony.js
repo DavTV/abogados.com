@@ -1,8 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Testimone from "./Testimone";
-const SliderTestimone = ({data}) => {
+import Testimone from "./Testimony";
+const SliderTestimony = ({data}) => {
     var settings = {
         dots: true,
         infinite: false,
@@ -45,4 +45,4 @@ const SliderTestimone = ({data}) => {
     
 }
  
-export default SliderTestimone;
+export default SliderTestimony;

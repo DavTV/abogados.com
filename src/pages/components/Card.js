@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({id,image, name, description, city, category}) => {
+const Card = ({id,image, name, school_number, city, category}) => {
     return ( 
-        <div className="p-2">
+        <div className="p-2 text-center">
         <div className="border  border-info">
         <Image src="/perfil.webp" className="w-100" width="0" height="0" layout="responsive" alt={name} />
         <div className="p-3">
-        <h5 className="text-info">{name} - {city}</h5>
+        <p className="text-info">{name}</p>
         <span>{category}</span>
-        <p className="truncate-text">{description}</p>
+        <p>NC: {school_number}</p>
         <div className=" my-2">
         <Link href={`/lawyer/${id}`} className=" btn btn-primary  ">Consultar</Link>
 

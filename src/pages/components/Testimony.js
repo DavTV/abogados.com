@@ -1,4 +1,4 @@
-const Testimone = () => {
+const Testimony = () => {
     return (  
         <div className="border border-info mx-1 p-3">
             <div className="d-flex justify-content-between bg-info text-white my-2 p-2">
@@ -14,4 +14,4 @@ const Testimone = () => {
     );
 }
  
-export default Testimone;
+export default Testimony;

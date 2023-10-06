@@ -2,13 +2,25 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Card from "./Card";
-const SliderCard = ({data}) => {
+import { useLawyers } from "@/hook/useLawyers";
+import {useState,useEffect} from "react"
+
+const SliderCard = () => {
+    const {getLawyers} = useLawyers();
+    const [lawyers, setLawyers] = useState([]);
+    useEffect( () =>{
+      console.log(getLawyers)
+      getLawyers().then((result)=>{ 
+        setLawyers(result)
+      })
+    }, []);
+    console.log(lawyers)
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         autoplaySpeed: 2000,
         responsive: [
           {
@@ -32,14 +44,12 @@ const SliderCard = ({data}) => {
       return (
        <div className="my-4">
         <Slider {...settings}>
-          <Card image="" name="Nombre Prueba" description="Divorcio, patria potestad, compra y venta, etc." key={1} id ={1}  city="ejemplo"  />
-          <Card image="" name="Nombre Prueba2" description="Divorcio, patria potestad, compra y venta, etc."key={2} id ={2}  city="ejemplo"  />
-          <Card image="" name="Nombre Prueba3" description="Divorcio, patria potestad, compra y venta, etc." key={3} id ={3}  city="ejemplo"  />
-          <Card image="" name="Nombre Prueba4" description="Divorcio, patria potestad, compra y venta, etc." key={4} id ={4}  city="ejemplo"   />
-          <Card image="" name="Nombre Prueba4" description="Divorcio, patria potestad, compra y venta, etc." key={5} id ={5}  city="ejemplo"  />
-          <Card image="" name="Nombre Prueba4" description="Divorcio, patria potestad, compra y venta, etc." key={6} id={6}  city="ejemplo"  />
-          <Card image="" name="Nombre Prueba4" description="Divorcio, patria potestad, compra y venta, etc." key={7} id={7}  city="ejemplo" />
-         
+
+          {
+                lawyers.length >0 && lawyers.map((lawyer)=>{
+                return <Card image="" name={lawyer.name_lawyer} school_number={lawyer.school_number} key={lawyer.id_lawyer} id={lawyer.id_lawyer}  city="ejemplo" />
+              })
+          }
         </Slider>
        </div> 
       );
