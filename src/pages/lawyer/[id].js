@@ -20,44 +20,51 @@ const Lawyer = () => {
     
    
     
-    const getInfoLawyer =async()=>{
+    const getInfoLawyer = async () => {
         try {
-            const options={
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json', // Especificamos que estamos enviando JSON
-                },
-                body: JSON.stringify({id_lawyer})
-             }
-             // Realiza la solicitud GET al endpoint utilizando fetch
-            const response = await fetch(`http://localhost:3000/api/lawyers/getLawyer`,options);
-            const response2 = await fetch(`http://localhost:3000/api/specialty/getSpecialtyLawyer`,options);
-            const response3 = await fetch(`http://localhost:3000/api/locations/getMunicipalitiesLawyer`,options);
-            const response4 = await fetch(`http://localhost:3000/api/experience/getExperience`,options);
-            // const response2 = await fetch(`http://localhost:3000/api/lawyers/${id_lawyer}`);
-            // console.log(await response2.json())
-            // Verifica si la respuesta es exitosa (código 200)
-            if (!response.ok) {
-                throw new Error('Error al obtener los datos');
-            }
-            
-            const data = await response.json();
-            const data2 = await response2.json();
-            const data3 = await response3.json();
-            const data4 = await response4.json();
-            console.log(data4)
-            setLawyer(data)
-            setSpecialtys(data2)
-            setMunicipalities(data3.result)
-            setExperience(data4)
-            setOffice_location(data.office_location.split(','))
-            
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify({ id_lawyer })
+          };
+      
+          
+          const [response, response2, response3, response4] = await Promise.all([
+            fetch('http://localhost:3000/api/lawyers/getLawyer', options),
+            fetch('http://localhost:3000/api/specialty/getSpecialtyLawyer', options),
+            fetch('http://localhost:3000/api/locations/getMunicipalitiesLawyer', options),
+            fetch('http://localhost:3000/api/experience/getExperience', options)
+          ]);
+      
+        // comentario
+          if (!response.ok || !response2.ok || !response3.ok || !response4.ok) {
+            throw new Error('Error al obtener los datos');
+          }
+      
+        
+          const [data, data2, data3, data4] = await Promise.all([
+            response.json(),
+            response2.json(),
+            response3.json(),
+            response4.json()
+          ]);
+      
+          console.log(data4);
+      
+         
+          setLawyer(data);
+          setSpecialtys(data2);
+          setMunicipalities(data3.result);
+          setExperience(data4);
+          setOffice_location(data.office_location.split(','));
         } catch (error) {
-            console.error('Error al realizar la consulta:', error.message);
+          console.error('Error al realizar la consulta:', error.message);
         }
-    }
+      };
+      
     
-    // console.log(municipalities,"municipalities");
     useEffect(()=>{
         getInfoLawyer();
 },[])
