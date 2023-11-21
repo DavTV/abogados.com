@@ -65,7 +65,8 @@ export default function Home() {
             {/* <div  className='my-5 py-3 p-3 text-center'>
               <h2 className='text-info my-5'>Testimonios</h2>
                 <SliderTestimony/>
-
+                comentario apra actualizar las variables de entorno en vercel
+                
             </div> */}
     </>
   )
