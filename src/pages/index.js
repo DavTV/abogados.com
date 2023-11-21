@@ -31,8 +31,8 @@ export default function Home() {
       <div className=' border border-info my-5 py-3 px-3 text-center bg-info text-white'>
         <h2 className='font-bold my-4 text-white'>Ver lista de Abogados registrados</h2>
         <hr/> 
-
-        {/* <SliderCard/> */}
+        
+        
         <div className="row ">
           
          <ul className='col-12 col-md-6 list-group list-none'>
