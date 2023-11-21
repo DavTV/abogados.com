@@ -1,0 +1,36 @@
+import { useState } from 'react'
+import { API_URL } from "../../config";
+
+// import Map from '../components/map/Map';
+export const useLawyer=()=>{
+    // const [id_lawyer, setId_lawyer] = useState(router.query.id)
+
+    const [municipalities, setMunicipalities] = useState([]);
+    const [specialties, setSpecialties] = useState([]);
+    const [lawyer, setLawyer] = useState({});
+    const [experiences, setExperiences] = useState([]);
+    // const google= "AIzaSyBn6M-RfKSn_eyAml9FdSfnEIZlPuOemtY"}
+    const [googleLoaded, setGoogleLoaded] = useState(false);
+    const [office_location, setOffice_location] = useState([]);
+   const [id, setId] = useState("");
+    const getInfoLawyer = async (id_lawyer) => {
+        try {
+
+            const response = await fetch(`${API_URL}/lawyers?filters[id]=${id_lawyer}&populate=*`)
+            const data = await response.json();
+            const { municipalities, specialties,experiences } = data.data[0].attributes;
+
+            setLawyer(data.data[0].attributes)
+            setMunicipalities(municipalities.data);
+            setSpecialties(specialties.data);
+            setExperiences(experiences.data);
+            setId(data.data[0].id)
+
+
+        } catch (error) {
+            console.error('Error al realizar la consulta:', error.message);
+        }
+    };
+  
+    return {getInfoLawyer,lawyer,municipalities,specialties,experiences,id,setLawyer}
+}

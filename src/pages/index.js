@@ -1,16 +1,13 @@
-import { Inter } from 'next/font/google'
-import Filter from './components/Filter'
+// import { Inter } from 'next/font/google'
 import SliderCard from './components/SliderCard'
 import Link from 'next/link'
 import SliderTestimony from './components/SliderTestimony'
-import { useDepartaments } from '@/hook/useDepartaments'
-// import { useDepartaments } from '@/hook/useDepartaments'
+import { useMunicipalities } from '@/hook/useMunicipalities'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
- const {departaments} = useDepartaments()
- console.log(departaments)
- 
+ const {municipalities} = useMunicipalities()
+ console.log(municipalities,"municipalidades")
   return (
     <>
     <div className="bg-foto"  >
@@ -38,19 +35,20 @@ export default function Home() {
         {/* <SliderCard/> */}
         <div className="row ">
           
-          <ul className='col-12 col-md-6 list-group list-none'>
+         <ul className='col-12 col-md-6 list-group list-none'>
             {
-              departaments.map((departament, index)=>{
-                if(departaments.length/2 >= index)
-                return <li className=' my-2 ' key={departament.id_location} ><Link  className='text-white' href= {`/listLawyer/${departament.name_departament}`}>   Abogado y Notario  en   {departament.name_departament} </Link></li>
+              municipalities.map((municipalitie, index)=>{
+                if(municipalities.length/2 >= index)
+                return <li className=' my-2 ' key={municipalitie.id} ><Link  className='text-white' href= {`/listLawyer/${municipalitie.attributes.name}`}>   Abogado y Notario  en   {municipalitie.attributes.name} </Link></li>
               })
             }
           </ul>
+            
           <ul className='col-12 col-md-6 list-group list-none'> 
             {
-              departaments.map((departament, index)=>{
-                if(departaments.length/2 < index)
-                return <li className=' my-2 ' key={departament.id_location}  ><Link  className='text-white' href= {`/listLawyer/${departament.name_departament}`}>   Abogado y Notario  en   {departament.name_departament} </Link></li>
+              municipalities.map((municipalitie, index)=>{
+                if(municipalities.length/2 < index)
+                return <li className=' my-2 ' key={municipalitie.id} ><Link  className='text-white' href= {`/listLawyer/${municipalitie.attributes.name}`}>   Abogado y Notario  en   {municipalitie.attributes.name} </Link></li>
               })
             }
           </ul>
@@ -63,12 +61,7 @@ export default function Home() {
               <p className='my-5'> 502abogados.com es un sitio web que busca tener la más amplia lista de Abogados y Notarios colegiados activos que tengan oficinas o presten sus servicios en cualquiera de los 340 municipios de la republica de Guatemala. El objetivo es que todas las personas (individuales o juridicas) que se encuentren en territorio extranjero puedan contratar los servicios legales de los profesionales del Derecho registrados en nuestra amplia base de datos.</p>
               <p className='my-5'>Esto tiene como beneficio que todas las personas (sin importar donde se encuentren) puedan contar con un directorio legal, fácil de utilizar y con un sistema de calificación que lo ayude a elegir mejor a quien contratar.</p>
             </div>
-            {/* <div >
-              
-                <h2 className='text-info text-center my-3 font-bold'>Abogados Notarios en el Salvador</h2>
-                
-                <Filter  router={true} />
-            </div> */}
+        
             <div  className='my-5 py-3 p-3 text-center'>
               <h2 className='text-info my-5'>Testimonios</h2>
                 <SliderTestimony/>

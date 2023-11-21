@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
-
-const nextConfig = {
-  reactStrictMode: true,
-  webpack(config) {
-    config.infrastructureLogging = { debug: /PackFileCache/ }
-    return config;
-  }
-  }
-
+module.exports = {
+  images: {
+    remotePatterns:[
+      {
+      protocol:"http",
+      hostname:"localhost",
+      port:"1337",
+      pathname:"/**"
+      }  
+    ] // Agrega el dominio de tu API o servidor de imágenes aquí
+  },
+};

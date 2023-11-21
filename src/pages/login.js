@@ -1,34 +1,9 @@
-import { signIn, useSession } from "next-auth/react";
+import { useLogin } from "@/hook/useLogin";
 import { useRouter } from "next/router";
 const Login = () => {
+    const {onSubmit,session} = useLogin();
     const router = useRouter();
-    const {data: session,status} = useSession();
-        const onSubmit= async(e)=>{
-            e.preventDefault();
-            const formData = new FormData(e.currentTarget);
-            const email = formData.get('email'),
-            password= formData.get('password');
-            // const data =  JSON.stringify ({password,email});
-            const res = await signIn("credentials",{
-                email,
-                password,
-                redirect:false
-            })
-            if(res.error){
-                console.log(res.error)
-            }
-            // console.log(res,"res")
-            // fetch('/api/auth/sigLogin',{
-            //     method: "POST",
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //         // 'Content-Type': 'application/x-www-form-urlencoded',
-            //       },
-            //     body: data
-            // })
-            //     .then(response => response.json())
-            //     .then(data => console.log(data));
-        }
+
         if(session){
             router.push("/dashboard");
         }
@@ -45,7 +20,7 @@ const Login = () => {
                     <label>Contraseña</label>
                 <input type="password" className="form-control" name="password" />
                 </div>
-              
+
                 <div className="mb-3">
                         <button className="btn btn-primary">Iniciar</button>
                 </div>

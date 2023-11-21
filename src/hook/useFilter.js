@@ -1,31 +1,38 @@
-import {useContext,useState } from 'react'
-// import { MyContext } from '../context/myContext'
-
-export const useFilter=(setDataFilter,setCityRouter)=>{
-    // const data =  useContext(MyContext);
-    const citys = data.dataCitys;
-    const categorys = data.dataCategorys;
-    const lawyer = data.lawyers;
-    const [categorySelect, setCategorySelect] = useState("");
-    const [citySelect, setCitySelect] = useState("");
-   
-    const handleSubmit=(e)=>{
+import { useMunicipalities } from "@/hook/useMunicipalities";
+import { useSpecialties } from "@/hook/useSpecialties";
+import { useState } from "react"; 
+import { API_URL } from "../../config";
+export const useFilter=(setDataFilter)=>{
+    const {municipalities} = useMunicipalities();
+    const {specialties} = useSpecialties();
+    const [municipalitieSelect, setMunicipalitiesSelect] = useState('');
+    const [specialtieSelect, setSpecialtieSelect] = useState('');
+    // const router = useRouter();
+    const handleSubmit= async(e)=>{
         e.preventDefault();
-        if(categorySelect == "" || citySelect == ""){
+        console.log(municipalitieSelect,specialtieSelect)
+        if(municipalitieSelect == "" || specialtieSelect == ""){
             alert("Llene todos los datos primero.")
-        }else{
-
-            setCityRouter(citySelect)
-            setDataFilter(lawyer.filter((item)=>{
-                if(item.city == citySelect && item.category == categorySelect) {
-                    return item;
-                }
-            })
-            )
+            return;   
         }
+         try {
+           
+            // Realiza la solicitud GET al endpoint utilizando fetch
+            
+            const response = await fetch(`${API_URL}/lawyers?population=*&filters[municipalities][name][$eq]=${municipalitieSelect}&filters[specialties][name][$eq]=${specialtieSelect}`);
+        
+            
+            const data = await response.json();
+            console.log("filtrada",data.data);
+            setDataFilter(data.data,municipalitieSelect)
+            // if(router){
+            //     router.push('/listLawyer');
+            // }
+          } catch (error) {
+            console.error('Error al realizar la consulta:', error.message);
+          }
+       
         }
-    return {citys, categorys, handleSubmit, setCategorySelect,setCitySelect}
-
-
-
+        return{handleSubmit,setMunicipalitiesSelect,setSpecialtieSelect,municipalities,specialties}
+        
 }

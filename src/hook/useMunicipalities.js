@@ -1,14 +1,12 @@
-// const {getDeparments} = useDeparments()
-  
 import { useState,useEffect } from "react";
-export const useDepartaments=()=>{
+import { API_URL } from "../../config";
+export const useMunicipalities=()=>{
     
-    const [departaments, setDepartaments] = useState([]);
-
-    const getDeparments= async()=>{
+    const [municipalities, setMunicipalities] = useState([]);
+    const getMunicipalities= async()=>{
       try {
         // Realiza la solicitud GET al endpoint utilizando fetch
-        const response = await fetch('http://localhost:3000/api/locations/getDepartaments');
+        const response = await fetch(`${API_URL}/municipalities`);
     
         // Verifica si la respuesta es exitosa (código 200)
         if (!response.ok) {
@@ -16,8 +14,8 @@ export const useDepartaments=()=>{
         }
   
         const data = await response.json();
-        setDepartaments(data)
-        console.log(departaments);
+        setMunicipalities(data.data)
+        console.log(municipalities);
   
       } catch (error) {
         console.error('Error al realizar la consulta:', error.message);
@@ -25,7 +23,7 @@ export const useDepartaments=()=>{
    
     }
     useEffect(() => {
-        getDeparments();
+        getMunicipalities();
     }, []); 
-    return {departaments}
+    return {municipalities}
 }

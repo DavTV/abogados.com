@@ -2,12 +2,7 @@ import Footet from "./components/Footer";
 import Header from "./components/Header";
 import { useState } from 'react';
 import SessionAuthProvadier from "../context/SessionAuthProvaider";
-// import "../styles/globals.css"
-// import { SessionProvider } from "next-auth/react"
-// import { useSession, signIn, signOut } from "next-auth/react"
 const Layout = ({ children }) => {
-    // const { data: session } = useSession()
-
     return (
         <>
 
@@ -21,7 +16,6 @@ const Layout = ({ children }) => {
                     {children}
                 </main>
                 <Footet />
-                {/* </SessionProvider> */}
 
             </SessionAuthProvadier>
         </>
