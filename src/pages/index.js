@@ -62,11 +62,11 @@ export default function Home() {
               <p className='my-5'>Esto tiene como beneficio que todas las personas (sin importar donde se encuentren) puedan contar con un directorio legal, fácil de utilizar y con un sistema de calificación que lo ayude a elegir mejor a quien contratar.</p>
             </div>
         
-            <div  className='my-5 py-3 p-3 text-center'>
+            {/* <div  className='my-5 py-3 p-3 text-center'>
               <h2 className='text-info my-5'>Testimonios</h2>
-                {/* <SliderTestimony/> */}
+                <SliderTestimony/>
 
-            </div>
+            </div> */}
     </>
   )
 }
