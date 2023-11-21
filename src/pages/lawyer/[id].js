@@ -40,8 +40,8 @@ const Lawyer = () => {
                 </div>
                 <div className='col-12 col-md-6'>
 
-
-                    <table class="table text-center">
+            {/* actualizando el class por className */}
+                    <table className="table text-center">
                         <thead>
                             <tr>
                                 <th>Horario</th>

@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth"
+import { API_URL } from "../../../../config";
 // import { unstable_renderSubtreeIntoContainer } from "react-dom/cjs/react-dom.production.min";
 export default  NextAuth({
     providers: [
@@ -11,8 +12,9 @@ export default  NextAuth({
             password: { label: "Password", type: "password" }
           },
           async authorize(credentials, req) {
-            const { email, password } = credentials;            
-            const res = await fetch(`http://localhost:1337/api/lawyers?filters[email]=${email}&filters[password]=${password}&populate=*`)            
+            const { email, password } = credentials;   
+                     
+            const res = await fetch(`${API_URL}/lawyers?filters[email]=${email}&filters[password]=${password}&populate=*`)            
             const user = await res.json();
             console.log(user)
             if(user.data.length<1) return;  

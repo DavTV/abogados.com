@@ -1,6 +1,5 @@
 import Footet from "./components/Footer";
 import Header from "./components/Header";
-import { useState } from 'react';
 import SessionAuthProvadier from "../context/SessionAuthProvaider";
 const Layout = ({ children }) => {
     return (
