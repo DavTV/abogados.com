@@ -11,7 +11,7 @@ const Footet = () => {
                 </div>
                 <div className="col-6 col-md-2">
                     <p>Referencia de responsabilidad</p>
-                    <a src="https://abogadosdb.onrender.com/admin/auth/login" target="_blank"  >Panel de administración</a>
+                    <a href="https://abogadosdb.onrender.com/admin/auth/login" target="_blank"  >Panel de administración</a>
                 </div>
                 <div className="col-6 col-md-2">
                 <p className="text-white font-bold text-3xl"><Link href="/"><Image src="/logo.png" width="150" height="70" /></Link></p>
