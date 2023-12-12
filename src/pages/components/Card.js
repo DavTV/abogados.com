@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { API_URL } from "../../../config";
 const Card = ({ id, image, name, school_number, city, category }) => {
   console.log(id, "id de la card")
   return (
