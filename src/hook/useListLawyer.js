@@ -10,7 +10,7 @@ export const useListLawyer=()=>{
     const {getLawyers} = useLawyers();
     const getLawyersMunicipalities= async()=>{
          try {
-            const response = await fetch(`${API_URL}/api/lawyers?filters[municipalities][name][$eq]=${cityRouter}`);
+            const response = await fetch(`${API_URL}/lawyers?filters[municipalities][name][$eq]=${cityRouter}`);
             const data = await response.json();
             setData(data.data)
             setDataOriginal(data.data)
