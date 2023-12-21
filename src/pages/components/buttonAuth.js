@@ -20,8 +20,8 @@ const ButtonAuth = () => {
     }
     return(
         <>
-            <Link href="/register" className="btn btn-primary mx-1 d-none d-md-inline " >Unete</Link >
-            <Link href="/login" className="btn btn-secondary mx-1 d-none d-md-inline " >Login</Link >
+            <Link href="/register" className="btn btn-primary mx-1  " >Unete</Link >
+            <Link href="/login" className="btn btn-secondary mx-1  " >Login</Link >
 
         </>
     )
