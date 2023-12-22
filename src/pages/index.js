@@ -15,7 +15,7 @@ export default function Home() {
         {/* <Image src="" width="500" height="500"   alt="portada"/> */}
         <div className='text-center w-100 px-3  '>
         
-          <h1 className="h1 text-white title">360abogados.com</h1>
+          <h1 className="h1 text-white title">503abogados.com</h1>
           <h2 className="h2 text-white sub-tilte">Abogados y Notarios en El Salvador</h2>
  
         </div>
