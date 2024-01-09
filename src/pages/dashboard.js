@@ -8,14 +8,15 @@ import Perfil from '../../public/perfil.png'
 import { useMunicipalities } from "@/hook/useMunicipalities";
 import { useModal } from "@/hook/useModal";
 import { useSpecialties } from "@/hook/useSpecialties";
+import FormAttention from "./components/FormAttention";
 
 const Dashboard = () => {
     const { data: session, status } = useSession([]);
     const allMunicipalities = useMunicipalities().municipalities;
     const allSpecialties = useSpecialties().specialties;
-    const { getInfoLawyer, lawyer, municipalities, specialties, experiences, id } = useLawyer();
+    const { getInfoLawyer, lawyer, municipalities, specialties, experiences, id, attention } = useLawyer();
     const { handleModal, isModalOpen } = useModal();
-    const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
+    const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData,loading } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
 
     useEffect(() => {
         if (status === "authenticated" && session.user) {
@@ -48,34 +49,37 @@ const Dashboard = () => {
 
                 backgroundColor: "rgba(10,10,10,.4)",
             }}>
-
+           
                 {/*Inicio Modal */}
                 <div className="w-100 h-100 bg-white" style={{ "overflow": "scroll" }}>
                     <div className="p-3 text-end"><button className={`btn`} onClick={handleModal} >❌</button> </div>
                     <FormPerfil lawyer={lawyer} handleBlur={handleBlur} handleChange={handleChange} userUpdate={userUpdate} onUpdate={onUpdate} />
                 </div>
+            
+
                 {/* Fin Modal */}
             </div>
             <div className='row'>
-                <div className=' col-12 col-md-6 p-4  bg-primary '>
-                    <div className=' w-100 text-white p-3 col-12 col-md-6'>
+                <div className=' col-12 col-md-4 p-4  bg-primary '>
+                    <div className='text-center w-100 text-white p-3 col-12 col-md-6'>
                         <p className='font-bold'>Activo</p>
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
-                    <div>
-                        <Image src={Perfil} width="0" height="0" layout='responsive' alt={lawyer.name} />
+                    <div className="text-center" >
+                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
                         <div className='my-3 text-white'>
 
-                            <p>Abogado: {lawyer.name}</p>
-                            <small> Celular: {lawyer.phone}</small>
+                            <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>
+                            <small> Celular :  {lawyer.phone}</small>
                         </div>
                     </div>
                 </div>
-                <div className='col-12 col-md-6 my-3 my-md-0'>
+                <div className='col-12 col-md-8 my-3 my-md-0'>
                     <button className='btn btn-primary text-white' onClick={handleModal}>Editar</button>
 
 
-                    <table class="table text-center">
+                    { attention.length > 0 ?
+                    <table className="table text-center">
                         <thead>
                             <tr>
                                 <th>Horario</th>
@@ -84,41 +88,26 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody >
-                            <tr>
-                                <td>Lunes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Martes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Miercoles</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Jueves</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Viernes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Domingo</td>
-                                <td>Cerrado</td>
-                                {/* <td>5:00</td> */}
-                            </tr>
+                           { console.log(attention[2])}
+                            {
+                          
+                                attention.map( day =>{
+                                    return (        
+                                    <tr>
+                                        <td>{day.attributes.day}</td>
+                                        <td>{day.attributes.hourStart || "--"}</td>
+                                        <td>{day.attributes.hourEnd || "--"}</td>
+                                    </tr>
+                                   )}
+                                )
+                                
+                            } 
                         </tbody>
-                    </table>
+                    </table>: <div className='p-3 my-3 d-flex align-items-center justify-content-center h-100'><p className='h1'>Sin Horario</p></div>
+} 
 
                 </div>
-
+             <FormAttention id_lawyer={id} getInfoLawyer={getInfoLawyer} />
             </div>
             <div className='row my-4 text-white bg-info align-items-start'>
                 <div className=' col-12 col-md-6 p-4'>
@@ -190,17 +179,6 @@ const Dashboard = () => {
 
             <div>
 
-                {/* {
-           
-            //    console.log(office_location)
-               !googleLoaded  ?  <div>Cargando Mapa</div> :  <Map
-               containerElement={<div style={{ height: '500px', width: '100%' }} />}
-               mapElement={<div style={{ height: '100%' }} />}
-               location={office_location}
-             />
-               
-       
-        } */}
 
 
             </div>
@@ -219,8 +197,8 @@ const Dashboard = () => {
 
 
                     <textarea className="form-control" placeholder="Agrega una experiencia" name="experience"></textarea>
-
-                    <p className="my-3"><button type="submit" className='btn btn-primary  w-100'>Agregar</button></p>
+                    {loading ? <p>Cargando ...</p> : ""}
+                    <p className="my-3"><button type="submit" className='btn btn-primary  w-100' disabled={loading ? true: false } >Agregar</button></p>
                 </form>
 
 

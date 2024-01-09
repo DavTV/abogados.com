@@ -9,6 +9,7 @@ import Perfil from '../../../public/perfil.png'
 
 const SliderCard = () => {
   const { getLawyers } = useLawyers();
+  console.log(getLawyers,"data hoy")
   const [lawyers, setLawyers] = useState([]);
   const getLawyersPromise= async()=>{
     const result = await getLawyers();

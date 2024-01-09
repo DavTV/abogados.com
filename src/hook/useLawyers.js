@@ -11,10 +11,10 @@ export const useLawyers=()=>{
         if (!response.ok) {
           throw new Error('Error al obtener los datos');
         }
-  
+        
         const data = await response.json();
         // setLawyers(data)
-        // console.log(departaments);
+        
         return data.data;
   
       } catch (error) {

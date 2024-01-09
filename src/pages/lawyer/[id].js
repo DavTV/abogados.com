@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
-    const {getInfoLawyer,lawyer,municipalities,specialties,experiences,id} = useLawyer();
+    const {getInfoLawyer,lawyer,municipalities,specialties,experiences,id,attention} = useLawyer();
    
 
     useEffect(() => {
@@ -24,23 +24,24 @@ const Lawyer = () => {
             </div>
             <div className='row'>
 
-                <div className=' col-12 col-md-6 p-4  bg-primary '>
-                    <div className=' w-100 text-white p-3 col-12 col-md-6'>
+            <div className=' col-12 col-md-4 p-4  bg-primary '>
+                    <div className='text-center w-100 text-white p-3 col-12 col-md-6'>
                         <p className='font-bold'>Activo</p>
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
-                    <div>
-                        <Image src={Perfil} width="0" height="0" layout='responsive' />
+                    <div className="text-center" >
+                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
                         <div className='my-3 text-white'>
 
-                            <p>Abogado: {lawyer.name}</p>
-                            <small> Celular: {lawyer.phone}</small>
+                            <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>
+                            <small> Celular :  {lawyer.phone}</small>
                         </div>
                     </div>
                 </div>
-                <div className='col-12 col-md-6'>
+                <div className='col-12 col-md-8'>
 
             {/* actualizando el class por className */}
+            { attention.length > 0 ?
                     <table className="table text-center">
                         <thead>
                             <tr>
@@ -50,41 +51,23 @@ const Lawyer = () => {
                             </tr>
                         </thead>
                         <tbody >
-                            <tr>
-                                <td>Lunes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Martes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Miercoles</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Jueves</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Viernes</td>
-                                <td>8:00</td>
-                                <td>5:00</td>
-                            </tr>
-                            <tr>
-                                <td>Domingo</td>
-                                <td>Cerrado</td>
-                                {/* <td>5:00</td> */}
-                            </tr>
+                            {
+                          
+                                attention.map( day =>{
+                                    return (        
+                                    <tr>
+                                        <td>{day.attributes.day}</td>
+                                        <td>{day.attributes.hourStart || "No"}</td>
+                                        <td>{day.attributes.hourEnd || "Attención"}</td>
+                                    </tr>
+                                   )}
+                                )
+                                
+                            } 
                         </tbody>
-                    </table>
-                    {/* <div style={{ "maxHeight": "400px", "overflow": "hidden" }} className="my-3 p-3 md:p-0 border-2 border-sky-700 ">
-                        <Image src="/mapa.PNG" alt='mapa' width="0" height="0" layout='responsive' />
-                    </div> */}
+                    </table>: <div className='p-3 my-3 d-flex align-items-center justify-content-center h-100'><p className='h1'>Sin Horario</p></div>
+} 
+    
                 </div>
 
             </div>

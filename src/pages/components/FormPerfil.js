@@ -37,7 +37,7 @@ const FormPerfil = ({onSubmit,lawyer,handleBlur,handleChange,userUpdate,onUpdate
                 <label>Domicilio</label>
                 <input type="text" className="form-control" name="location" onChange={handleChange} onBlur={handleBlur} value={ userUpdate.location} />
             </div>
-        
+           
             <div className="mb-3">
                 <button className="btn btn-primary">Actualizar</button>
             </div>
