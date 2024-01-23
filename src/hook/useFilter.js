@@ -2,16 +2,18 @@ import { useMunicipalities } from "@/hook/useMunicipalities";
 import { useSpecialties } from "@/hook/useSpecialties";
 import { useState } from "react"; 
 import { API_URL } from "../../config";
+import { useDepartaments } from "./useDepartaments";
 export const useFilter=(setDataFilter)=>{
     const {municipalities} = useMunicipalities();
+    const{departaments} = useDepartaments();
     const {specialties} = useSpecialties();
-    const [municipalitieSelect, setMunicipalitiesSelect] = useState('');
+    const [departamentSelect, setDepartamentSelect] = useState('');
     const [specialtieSelect, setSpecialtieSelect] = useState('');
     // const router = useRouter();
     const handleSubmit= async(e)=>{
         e.preventDefault();
-        console.log(municipalitieSelect,specialtieSelect)
-        if(municipalitieSelect == "" || specialtieSelect == ""){
+        console.log(departamentSelect,specialtieSelect)
+        if(departamentSelect == "" || specialtieSelect == ""){
             alert("Llene todos los datos primero.")
             return;   
         }
@@ -19,12 +21,12 @@ export const useFilter=(setDataFilter)=>{
            
             // Realiza la solicitud GET al endpoint utilizando fetch
             
-            const response = await fetch(`${API_URL}/lawyers?population=*&filters[municipalities][name][$eq]=${municipalitieSelect}&filters[specialties][name][$eq]=${specialtieSelect}`);
+            const response = await fetch(`${API_URL}/lawyers?population=*&filters[departaments][name][$eq]=${departamentSelect}&filters[specialties][name][$eq]=${specialtieSelect}`);
         
             
             const data = await response.json();
             console.log("filtrada",data.data);
-            setDataFilter(data.data,municipalitieSelect)
+            setDataFilter(data.data,departamentSelect)
             // if(router){
             //     router.push('/listLawyer');
             // }
@@ -33,6 +35,6 @@ export const useFilter=(setDataFilter)=>{
           }
        
         }
-        return{handleSubmit,setMunicipalitiesSelect,setSpecialtieSelect,municipalities,specialties}
+        return{handleSubmit,setDepartamentSelect,setSpecialtieSelect,departaments,specialties}
         
 }

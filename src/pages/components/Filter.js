@@ -1,6 +1,6 @@
 import { useFilter } from "@/hook/useFilter";
 const Filter = ({setDataFilter}) => {
-    const {handleSubmit,setMunicipalitiesSelect,setSpecialtieSelect,municipalities,specialties}= useFilter(setDataFilter)    
+    const {handleSubmit,setDepartamentSelect,setSpecialtieSelect,departaments,specialties}= useFilter(setDataFilter)    
 
     return ( 
         <div className=" p-3 my-8 container bg-info my-5">
@@ -9,14 +9,14 @@ const Filter = ({setDataFilter}) => {
                 <div className="my-2 col-12 col-md-5 ">
 
                     <select className="form-select" onChange={(e) => { 
-                    setMunicipalitiesSelect(e.target.value) }    
+                    setDepartamentSelect(e.target.value) }    
                 
                 }>
-                        <option value="">Seleciona Municipalidad</option>
+                        <option value="">Seleciona departamento</option>
                         {
-                            municipalities.map((municipalitie) => {
+                            departaments.map((departament) => {
 
-                                return <option value={municipalitie.attributes.name} key={municipalitie.attributes.name} >{municipalitie.attributes.name}</option>
+                                return <option value={departament.attributes.name} key={departament.attributes.name} >{departament.attributes.name}</option>
                             })
                         }
 

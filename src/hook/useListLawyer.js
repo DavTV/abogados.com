@@ -8,9 +8,9 @@ export const useListLawyer=()=>{
     const [dataFilter, setDataFilter] = useState([]);
     const [data, setData] = useState([]);
     const {getLawyers} = useLawyers();
-    const getLawyersMunicipalities= async()=>{
+    const getLawyersDepartaments= async()=>{
          try {
-            const response = await fetch(`${API_URL}/lawyers?filters[municipalities][name][$eq]=${cityRouter}`);
+            const response = await fetch(`${API_URL}/lawyers?filters[departaments][name][$eq]=${cityRouter}`);
             const data = await response.json();
             setData(data.data)
             setDataOriginal(data.data)
@@ -24,5 +24,5 @@ const getAllLawyers= async ()=>{
   const getAllLawyers = await getLawyers();
   setData(getAllLawyers)
 }
-return {getAllLawyers,getLawyersMunicipalities,setData,setDataFilter,dataFilter,cityRouter,data}
+return {getAllLawyers,getLawyersDepartaments,setData,setDataFilter,dataFilter,cityRouter,data}
 }

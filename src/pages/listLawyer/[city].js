@@ -6,9 +6,9 @@ import { useListLawyer } from "@/hook/useListLawyer";
 import Perfil from '../../../public/perfil.png'
 
 const ListLawyer = () => {
-  const { getAllLawyers, getLawyersMunicipalities, setData, setDataFilter, dataFilter, cityRouter, data } = useListLawyer();
+  const { getAllLawyers, getLawyersDepartaments, setData, setDataFilter, dataFilter, cityRouter, data } = useListLawyer();
   useEffect(() => {
-    getLawyersMunicipalities();
+    getLawyersDepartaments();
   }, [])
   useEffect(() => {
     setData(dataFilter)
@@ -17,7 +17,8 @@ const ListLawyer = () => {
     <div className="mt-5 p-3">
 
       <div className="d-flex justify-content-between flex-wrap">
-        <p>Abogados y Notarios en el Salvador, <span> {dataFilter.municipalitiesSelect || cityRouter}</span></p>
+        {console.log(dataFilter,"data filter")}
+        <p>Abogados y Notarios en el Salvador, <span> {dataFilter.departamentSelect|| cityRouter}</span></p>
         <div>
 
           <button className="btn btn-primary" onClick={() => { getAllLawyers() }} >Ver todos los abogados</button>

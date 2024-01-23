@@ -9,15 +9,17 @@ import { useMunicipalities } from "@/hook/useMunicipalities";
 import { useModal } from "@/hook/useModal";
 import { useSpecialties } from "@/hook/useSpecialties";
 import FormAttention from "./components/FormAttention";
+import { useDepartaments } from "@/hook/useDepartaments";
 
 const Dashboard = () => {
     const { data: session, status } = useSession([]);
     const allMunicipalities = useMunicipalities().municipalities;
+    const allDerpartaments = useDepartaments().departaments;
     const allSpecialties = useSpecialties().specialties;
+    console.log(allDerpartaments,"departamentos")
     const { getInfoLawyer, lawyer, municipalities, specialties, experiences, id, attention } = useLawyer();
     const { handleModal, isModalOpen } = useModal();
     const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData,loading } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
-
     useEffect(() => {
         if (status === "authenticated" && session.user) {
             const id_lawyer = session.user.data[0].id;

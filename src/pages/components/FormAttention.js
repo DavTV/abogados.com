@@ -8,10 +8,42 @@ const FormAttention = ({id_lawyer,getInfoLawyer}) => {
         <div className="row">
             <h2>Horario</h2>
 
-        <div className="mb-3 col-12 col-md-6 ">
+        <div className="mb-3 col-12 col-md-3">
+            <label>Día</label>
+            <select className="form-select" name="day">
+                <option>Lunes</option>
+                <option>Martes</option>
+            </select>
+          
+
+        </div>
+        <div className="mb-3 col-12 col-md-3">
+        <label>Inicio</label>
+            <select className="form-select" name="start">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+
+        </div>
+        <div className="mb-3 col-12 col-md-3">
+        <label>Fin</label>
+         
+         <select className="form-select" name="end">
+             <option>1</option>
+             <option>2</option>
+             <option>3</option>
+         </select>
+
+     </div>
+     <div className="mb-3 col-12 col-md-3">
+       <button className="btn btn-dark my-4" type="submit">Agregar</button>
+     </div>
+
+        {/* <div className="mb-3 col-12 col-md-6 ">
             <label>Lunes</label>
-            <input type="time" className="form-control my-1"   onChange={(e) => capturarValor(e, 'Lunes', 'hourStart')} />
-            <input type="time" className="form-control my-1"   onChange={(e) => capturarValor(e, 'Lunes', 'hourEnd')}  />
+            <input type="time" className="form-control my-1"   onChange={(e) => capturarValor(e, 'Lunes', 'hourStart')} step="3600" />
+            <input type="time" className="form-control my-1"   onChange={(e) => capturarValor(e, 'Lunes', 'hourEnd')} step="3600"  />
        
             
         </div>
@@ -52,8 +84,8 @@ const FormAttention = ({id_lawyer,getInfoLawyer}) => {
             <input type="time" className=" my-1 form-control" onChange={(e) => capturarValor(e, 'Domingo', 'hourEnd')} />
             
         </div>              
-       
-        </div>
+       */}
+        </div> 
         </form>
         );
 }
