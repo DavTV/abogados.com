@@ -17,7 +17,7 @@ const Dashboard = () => {
     const allDerpartaments = useDepartaments().departaments;
     const allSpecialties = useSpecialties().specialties;
     console.log(allDerpartaments,"departamentos")
-    const { getInfoLawyer, lawyer, municipalities, specialties, experiences, id, attention } = useLawyer();
+    const { getInfoLawyer, lawyer, departaments, specialties, experiences, id, attention } = useLawyer();
     const { handleModal, isModalOpen } = useModal();
     const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData,loading } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
     useEffect(() => {
@@ -119,8 +119,8 @@ const Dashboard = () => {
 
                         <ul className='row list-none text-center'>
                             {
-                                municipalities.map((municipalitie) => {
-                                    return <li className='my-1 col-6 text-center'> {municipalitie.attributes.name} <button className="btn" onClick={() => { deleteData(municipalitie.id, "municipalitie") }} >❌ </button> </li>
+                               departaments.map((derpartament) => {
+                                    return <li className='my-1 col-6 text-center'> {derpartament.attributes.name} <button className="btn" onClick={() => { deleteData(derpartament.id, "municipalitie") }} >❌ </button> </li>
                                 })
                             }
                             <form onSubmit={addNewData}>
@@ -129,8 +129,8 @@ const Dashboard = () => {
                                     <select className="form-select" name="municipalitie" >
                                         <option>Elige una municipalidad</option>
                                         {
-                                            allMunicipalities.map((municipalitie) => {
-                                                return <option value={municipalitie.id}>{municipalitie.attributes.name}</option>
+                                            allDerpartaments.map((derpartament) => {
+                                                return <option value={derpartament.id}>{derpartament.attributes.name}</option>
 
                                             })
                                         }

@@ -6,7 +6,7 @@ import { useMunicipalities } from '@/hook/useMunicipalities'
 import { useDepartaments } from '@/hook/useDepartaments'
 // const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-  const {municipalities} = useMunicipalities()
+  // const {municipalities} = useMunicipalities()
   const {departaments} = useDepartaments()
   console.log(departaments,"dpartaemnt")
  console.log(municipalities,"municipalidades")
@@ -48,9 +48,9 @@ export default function Home() {
             
           <ul className='col-12 col-md-6 list-group list-none'> 
             {
-              municipalities.map((municipalitie, index)=>{
-                if(municipalities.length/2 < index)
-                return <li className=' my-2 ' key={municipalitie.id} ><Link  className='text-white' href= {`/listLawyer/${municipalitie.attributes.name}`}>   Abogado y Notario  en   {municipalitie.attributes.name} </Link></li>
+              departaments.map((departament, index)=>{
+                if(departament.length/2 < index)
+                return <li className=' my-2 ' key={departament.id} ><Link  className='text-white' href= {`/listLawyer/${departament.attributes.name}`}>   Abogado y Notario  en   {departament.attributes.name} </Link></li>
               })
             }
           </ul>
