@@ -127,7 +127,7 @@ const Dashboard = () => {
                                 <li><input type="hidden" value="municipalitie" name="caso" /> </li>
                                 <li className="my-3">
                                     <select className="form-select" name="municipalitie" >
-                                        <option>Elige una municipalidad</option>
+                                        <option>Elige un departamento</option>
                                         {
                                             allDerpartaments.map((derpartament) => {
                                                 return <option value={derpartament.id}>{derpartament.attributes.name}</option>

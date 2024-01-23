@@ -31,7 +31,7 @@ export default function Home() {
         <SliderCard />
       </div>
       <div className=' border border-info my-5 py-3 px-3 text-center bg-info text-white'>
-        <h2 className='font-bold my-4 text-white'>Ver lista de Abogados registrados</h2>
+        <h2 className='font-bold my-4 text-white'>Ver lista de Abogados registrados por departamento</h2>
         <hr/> 
         
         
