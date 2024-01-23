@@ -1,15 +1,10 @@
-// import { Inter } from 'next/font/google'
 import SliderCard from './components/SliderCard'
 import Link from 'next/link'
-import SliderTestimony from './components/SliderTestimony'
-import { useMunicipalities } from '@/hook/useMunicipalities'
+// import SliderTestimony from './components/SliderTestimony'
 import { useDepartaments } from '@/hook/useDepartaments'
-// const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-  // const {municipalities} = useMunicipalities()
   const {departaments} = useDepartaments()
   console.log(departaments,"dpartaemnt")
- console.log(municipalities,"municipalidades")
   return (
     <>
     <div className="bg-foto"  >
