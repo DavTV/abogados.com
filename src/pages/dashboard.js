@@ -96,9 +96,9 @@ const Dashboard = () => {
                                 attention.map( day =>{
                                     return (        
                                     <tr>
-                                        <td>{day.attributes.day}</td>
-                                        <td>{day.attributes.hourStart || "--"}</td>
-                                        <td>{day.attributes.hourEnd || "--"}</td>
+                                        <td>{day.attributes.day }</td>
+                                        <td>{day.attributes.hourStart   || "--"}</td>
+                                        <td>{day.attributes.hourEnd   || "--"}</td>
                                     </tr>
                                    )}
                                 )

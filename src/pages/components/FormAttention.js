@@ -13,6 +13,11 @@ const FormAttention = ({id_lawyer,getInfoLawyer}) => {
             <select className="form-select" name="day">
                 <option>Lunes</option>
                 <option>Martes</option>
+                <option>Miercoles</option>
+                <option>Jueves</option>
+                <option>Viernes</option>
+                <option>Sábado</option>
+                <option>Domingo</option>
             </select>
           
 
@@ -20,9 +25,18 @@ const FormAttention = ({id_lawyer,getInfoLawyer}) => {
         <div className="mb-3 col-12 col-md-3">
         <label>Inicio</label>
             <select className="form-select" name="start">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option>1:00</option>
+                <option>2:00</option>
+                <option>3:00</option>
+                <option>4:00</option>
+                <option>5:00</option>
+                <option>6:00</option>
+                <option>7:00</option>
+                <option>8:00</option>
+                <option>9:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
             </select>
 
         </div>
@@ -30,9 +44,18 @@ const FormAttention = ({id_lawyer,getInfoLawyer}) => {
         <label>Fin</label>
          
          <select className="form-select" name="end">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
+         <option>1:00</option>
+                <option>2:00</option>
+                <option>3:00</option>
+                <option>4:00</option>
+                <option>5:00</option>
+                <option>6:00</option>
+                <option>7:00</option>
+                <option>8:00</option>
+                <option>9:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
          </select>
 
      </div>
