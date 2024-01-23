@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
-    const {getInfoLawyer,lawyer,municipalities,specialties,experiences,id,attention} = useLawyer();
+    const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
    
 
     useEffect(() => {
@@ -79,8 +79,8 @@ const Lawyer = () => {
                         <ul className='row list-none text-center'>
                             {
                                 // console.log(municipalities,"las municipalidades")
-                                municipalities.map((municipalitie)=>{
-                                       return   <li className='my-1 col-6 text-center'> ⭐ {municipalitie.attributes.name}  </li>
+                                departaments.map((departament)=>{
+                                       return   <li className='my-1 col-6 text-center'> ⭐ {departament.attributes.name}  </li>
                                 })
 
                             }
