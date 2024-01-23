@@ -63,7 +63,7 @@ export const useUpdatePerfil = (id, getInfoLawyer, lawyer, handleModal) => {
 
     switch (caso) {
       case "departament":
-        idsData = municipalities ? departaments.data.map((mun) => mun.id) : []
+        idsData = departaments ? departaments.data.map((mun) => mun.id) : []
         break;
       case "specialtie":
         idsData = specialties ? specialties.data.map((mun) => mun.id) : []
@@ -114,7 +114,7 @@ export const useUpdatePerfil = (id, getInfoLawyer, lawyer, handleModal) => {
       let idsData = [];
       if (idDeleteData) {
         switch (caso) {
-          case "municipalitie":
+          case "departament":
             idsData =departaments ?departaments.data.filter((mun) => mun.id != idDeleteData) : []
             break;
           case "specialtie":
