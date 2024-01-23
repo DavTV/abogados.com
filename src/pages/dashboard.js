@@ -120,13 +120,13 @@ const Dashboard = () => {
                         <ul className='row list-none text-center'>
                             {
                                departaments.map((derpartament) => {
-                                    return <li className='my-1 col-6 text-center'> {derpartament.attributes.name} <button className="btn" onClick={() => { deleteData(derpartament.id, "municipalitie") }} >❌ </button> </li>
+                                    return <li className='my-1 col-6 text-center'> {derpartament.attributes.name} <button className="btn" onClick={() => { deleteData(derpartament.id, "departament") }} >❌ </button> </li>
                                 })
                             }
                             <form onSubmit={addNewData}>
-                                <li><input type="hidden" value="municipalitie" name="caso" /> </li>
+                                <li><input type="hidden" value="departament" name="caso" /> </li>
                                 <li className="my-3">
-                                    <select className="form-select" name="municipalitie" >
+                                    <select className="form-select" name="departament" >
                                         <option>Elige un departamento</option>
                                         {
                                             allDerpartaments.map((derpartament) => {

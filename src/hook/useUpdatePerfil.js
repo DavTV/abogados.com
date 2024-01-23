@@ -52,7 +52,7 @@ export const useUpdatePerfil = (id, getInfoLawyer, lawyer, handleModal) => {
     const caso = formData.get('caso');
     // si no encuentra id va a obtener el valor del textArea
     const idNewData = formData.get(caso) == NaN ? parseInt(formData.get(caso)) : formData.get(caso);
-    const { municipalities, specialties, experiences } = lawyer;
+    const { departaments, specialties, experiences } = lawyer;
 
     if (!idNewData) {
       alert("Seleccione " + caso);
@@ -62,8 +62,8 @@ export const useUpdatePerfil = (id, getInfoLawyer, lawyer, handleModal) => {
     let idsData = [];
 
     switch (caso) {
-      case "municipalitie":
-        idsData = municipalities ? municipalities.data.map((mun) => mun.id) : []
+      case "departament":
+        idsData = municipalities ? departaments.data.map((mun) => mun.id) : []
         break;
       case "specialtie":
         idsData = specialties ? specialties.data.map((mun) => mun.id) : []
@@ -110,12 +110,12 @@ export const useUpdatePerfil = (id, getInfoLawyer, lawyer, handleModal) => {
       setLoading(true);
 
       const idDeleteData = id_data;
-      const { municipalities, specialties, experiences } = lawyer;
+      const { departaments, specialties, experiences } = lawyer;
       let idsData = [];
       if (idDeleteData) {
         switch (caso) {
           case "municipalitie":
-            idsData = municipalities ? municipalities.data.filter((mun) => mun.id != idDeleteData) : []
+            idsData =departaments ?departaments.data.filter((mun) => mun.id != idDeleteData) : []
             break;
           case "specialtie":
             idsData = specialties ? specialties.data.filter((mun) => mun.id != idDeleteData) : []
