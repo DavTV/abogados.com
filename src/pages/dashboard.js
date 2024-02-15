@@ -70,7 +70,8 @@ const Dashboard = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        <Image src={lawyer.photo ? API_IMG+lawyer.photo.data[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} />
+                        {/* <Image src={lawyer.photo ? API_IMG+lawyer.photo.data[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} /> */}
+                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
                         {/* {lawyer.photo != null ?  console.log(lawyer ,"url"):console.log("nada")} */}
                         <div className='my-3 text-white'>
 
