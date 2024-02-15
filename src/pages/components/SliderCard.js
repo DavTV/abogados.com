@@ -55,18 +55,7 @@ const SliderCard = () => {
         {
           lawyers.length > 0 && lawyers.map((lawyer) => {
             const aux = lawyer.attributes.photo.data;
-            const imageLoader = ({ src, width, quality }) => {
-              return `${API_IMG}${src}?w=${width}&q=${quality || 75}`;
-            };
-            return <Card 
-            image={aux ? `${API_IMG}${aux[0].attributes.url}` : Perfil.src} 
-            name={lawyer.attributes.name} 
-            school_number={lawyer.attributes.school_number} 
-            key={lawyer.attributes.id} 
-            id={lawyer.id} 
-            city="ejemplo" 
-            loader={imageLoader} // Pasa el cargador de imagen personalizado como prop al componente Card
-          /> 
+            return <Card image={aux ?`${API_IMG}${aux[0].attributes.url}`:Perfil.src} name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id} city="ejemplo" /> 
           })
         }
       </Slider>
