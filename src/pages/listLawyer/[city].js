@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Filter from "../components/Filter";
 import Card from "../components/Card";
 import { useListLawyer } from "@/hook/useListLawyer";
-import Perfil from '../../../public/perfil.png'
+import Perfil from '../../../public/perfil.png';
+import { API_IMG } from "../../../config";
 
 const ListLawyer = () => {
   const { getAllLawyers, getLawyersDepartaments, setData, setDataFilter, dataFilter, cityRouter, data } = useListLawyer();
@@ -32,11 +33,12 @@ const ListLawyer = () => {
         }
         <div className="row">
           {
-
+            // console.log(data)
             data.map((lawyer) => {
-
-              return <div className="col-12 col-lg-3 col-md-4"> <Card name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id} image={Perfil} /></div>
-
+              let aux = lawyer.attributes.photo.data;
+   
+              return <div className="col-12 col-lg-3 col-md-4"> <Card name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id}  image={aux ? API_IMG+aux[0].attributes.url : Perfil.src} /></div>
+              // console.log( aux || Perfil.url)
             })
           }
         </div>

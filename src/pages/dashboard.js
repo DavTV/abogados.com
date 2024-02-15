@@ -10,7 +10,7 @@ import { useModal } from "@/hook/useModal";
 import { useSpecialties } from "@/hook/useSpecialties";
 import FormAttention from "./components/FormAttention";
 import { useDepartaments } from "@/hook/useDepartaments";
-
+import { API_IMG } from "../../config";
 const Dashboard = () => {
     const { data: session, status } = useSession([]);
     const allMunicipalities = useMunicipalities().municipalities;
@@ -20,10 +20,12 @@ const Dashboard = () => {
     const { getInfoLawyer, lawyer, departaments, specialties, experiences, id, attention } = useLawyer();
     const { handleModal, isModalOpen } = useModal();
     const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData,loading } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
+    // let aux = Perfil.src ;       
     useEffect(() => {
         if (status === "authenticated" && session.user) {
             const id_lawyer = session.user.data[0].id;
             getInfoLawyer(id_lawyer);
+            // aux = lawyer.photo ? lawyer.photo.data
         }
     }, [status, session]);
 
@@ -68,7 +70,8 @@ const Dashboard = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
+                        <Image src={lawyer.photo ? API_IMG+lawyer.photo.data[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} />
+                        {/* {lawyer.photo != null ?  console.log(lawyer ,"url"):console.log("nada")} */}
                         <div className='my-3 text-white'>
 
                             <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>

@@ -21,7 +21,7 @@ export const useFilter=(setDataFilter)=>{
            
             // Realiza la solicitud GET al endpoint utilizando fetch
             
-            const response = await fetch(`${API_URL}/lawyers?population=*&filters[departaments][name][$eq]=${departamentSelect}&filters[specialties][name][$eq]=${specialtieSelect}`);
+            const response = await fetch(`${API_URL}/lawyers?populate=*&filters[departaments][name][$eq]=${departamentSelect}&filters[specialties][name][$eq]=${specialtieSelect}`);
         
             
             const data = await response.json();

@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 import Perfil from '../../../public/perfil.png'
 import { useLawyer } from '@/hook/useLawyer';
 import { useRouter } from "next/router";
+import { API_IMG } from '../../../config';
 
 const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
     const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
-   
-
+    const aux =  lawyer.photo ? lawyer.photo.data : Perfil.src ;       
+    // console.log(lawyer.photo,"poto")
+    // console.log(aux)
     useEffect(() => {
         getInfoLawyer(id_lawyer);
     }, [])
@@ -17,6 +19,7 @@ const Lawyer = () => {
     return (
         <div className='mt-5 p-4'>
             <br />
+            
             <h2 className='h1 text-center'>Profesional: {lawyer.name} </h2>
             <hr />
             <div className=' my-4 text-end'>
@@ -30,7 +33,7 @@ const Lawyer = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
+                        <Image src={aux[0].attributes ? API_IMG+aux[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} />
                         <div className='my-3 text-white'>
 
                             <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>
