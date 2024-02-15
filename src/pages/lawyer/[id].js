@@ -11,7 +11,7 @@ const Lawyer = () => {
     const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
     const aux =  lawyer.photo ? lawyer.photo.data : Perfil.src ;       
     // console.log(lawyer.photo,"poto")
-    // console.log(aux)
+    console.log(aux)
     useEffect(() => {
         getInfoLawyer(id_lawyer);
     }, [])
@@ -33,7 +33,8 @@ const Lawyer = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        <Image src={aux[0].attributes ? API_IMG+aux[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} />
+                        {/* <Image src={aux[0].attributes ? API_IMG+aux[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} /> */}
+                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
                         <div className='my-3 text-white'>
 
                             <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>

@@ -55,7 +55,8 @@ const SliderCard = () => {
         {
           lawyers.length > 0 && lawyers.map((lawyer) => {
             const aux = lawyer.attributes.photo.data;
-            return <Card image={aux ?`${API_IMG}${aux[0].attributes.url}`:Perfil.src} name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id} city="ejemplo" /> 
+            // return <Card image={aux ?`${API_IMG}${aux[0].attributes.url}`:Perfil.src} name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id} city="ejemplo" /> 
+            return <Card image={Perfil} name={lawyer.attributes.name} school_number={lawyer.attributes.school_number} key={lawyer.attributes.id} id={lawyer.id} city="ejemplo" /> 
           })
         }
       </Slider>
