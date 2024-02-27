@@ -35,8 +35,10 @@ export default function Home() {
          <ul className='col-12 col-md-6 list-group list-none'>
             {
               departaments.map((departament, index)=>{
-                if(departaments.length/2 >= index)
+                if(index < Math.ceil(departaments.length / 2)){
                 return <li className=' my-2 ' key={departament.id} ><Link  className='text-white' href= {`/listLawyer/${departament.attributes.name}`}>   Abogado y Notario  en   {departament.attributes.name} </Link></li>
+                }
+                return null;
               })
             }
           </ul>
@@ -44,8 +46,10 @@ export default function Home() {
           <ul className='col-12 col-md-6 list-group list-none'> 
             {
               departaments.map((departament, index)=>{
-                if(departament.length/2 < index)
+                if(index < Math.ceil(departaments.length / 2)){
                 return <li className=' my-2 ' key={departament.id} ><Link  className='text-white' href= {`/listLawyer/${departament.attributes.name}`}>   Abogado y Notario  en   {departament.attributes.name} </Link></li>
+                }
+                return null;
               })
             }
           </ul>
