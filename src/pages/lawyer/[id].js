@@ -9,9 +9,12 @@ const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
     const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
-    const aux =  lawyer.photo ? lawyer.photo.data : Perfil.src ;       
-    // console.log(lawyer.photo,"poto")
-    console.log(aux)
+    const image =  lawyer.photo ? lawyer.photo.data[0].attributes.url : Perfil.src ;       
+    // console.log(aux,"poto")
+    // console.log(aux)
+    const imageLoader = () => {
+    return `${API_IMG}${image}`
+}
     useEffect(() => {
         getInfoLawyer(id_lawyer);
     }, [])
@@ -33,8 +36,8 @@ const Lawyer = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        {/* <Image src={aux[0].attributes ? API_IMG+aux[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} /> */}
-                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
+                        <Image loader={imageLoader} src={API_IMG+image} width="300" height="300" layout="responsive" style={{"maxHeight":"300px","objectFit":"cover","minHeight":"200px"}}  alt={lawyer.name} />
+                        {/* <Image src={Perfil} width="300" height="300"  alt={lawyer.name} /> */}
                         <div className='my-3 text-white'>
 
                             <p>Abogado : <span className="mx-1">{lawyer.name }</span></p>
