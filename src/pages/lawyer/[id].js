@@ -9,7 +9,7 @@ const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
     const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
-    const image =  lawyer.photo ? lawyer.photo.data[0].attributes.url : Perfil.src ;       
+    const image =  lawyer.photo.data[0] ? lawyer.photo.data[0].attributes.url : Perfil.src ;       
     // console.log(aux,"poto")
     // console.log(aux)
     const imageLoader = () => {
