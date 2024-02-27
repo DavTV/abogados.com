@@ -11,6 +11,7 @@ import { useSpecialties } from "@/hook/useSpecialties";
 import FormAttention from "./components/FormAttention";
 import { useDepartaments } from "@/hook/useDepartaments";
 import { API_IMG } from "../../config";
+import { useState } from "react";
 const Dashboard = () => {
     const { data: session, status } = useSession([]);
     const allMunicipalities = useMunicipalities().municipalities;
@@ -21,6 +22,7 @@ const Dashboard = () => {
     const { handleModal, isModalOpen } = useModal();
     const { handleBlur, handleChange, userUpdate, onUpdate, addNewData, deleteData,loading } = useUpdatePerfil(id, getInfoLawyer, lawyer, handleModal);
     // let aux = Perfil.src ;       
+    const [imagen, setImagen] = useState({});
     useEffect(() => {
         if (status === "authenticated" && session.user) {
             const id_lawyer = session.user.data[0].id;
@@ -28,6 +30,17 @@ const Dashboard = () => {
             // aux = lawyer.photo ? lawyer.photo.data
         }
     }, [status, session]);
+    useEffect(() => {
+        if (lawyer.photo && lawyer.photo.data && lawyer.photo.data.length > 0) {
+            const image = API_IMG+lawyer.photo.data[0].attributes.url;
+            setImagen(image)
+        } else {
+            const image = API_IMG+Perfil.src;
+        }
+        }, [lawyer]);
+        const imageLoader = () => {
+            return `${imagen}`
+        }
 
 
 
@@ -71,7 +84,7 @@ const Dashboard = () => {
                     </div>
                     <div className="text-center" >
                         {/* <Image src={lawyer.photo ? API_IMG+lawyer.photo.data[0].attributes.url:Perfil.src} width="300" height="300"  alt={lawyer.name} /> */}
-                        <Image src={Perfil} width="300" height="300"  alt={lawyer.name} />
+                        <Image  loader={imageLoader} src={imagen} width="300" height="300" layout="responsive" style={{"maxHeight":"300px","objectFit":"cover","minHeight":"200px"}}   alt={lawyer.name} />
                         {/* {lawyer.photo != null ?  console.log(lawyer ,"url"):console.log("nada")} */}
                         <div className='my-3 text-white'>
 

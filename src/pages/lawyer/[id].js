@@ -1,24 +1,31 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Perfil from '../../../public/perfil.png'
 import { useLawyer } from '@/hook/useLawyer';
 import { useRouter } from "next/router";
 import { API_IMG } from '../../../config';
-
 const Lawyer = () => {
     const router = useRouter();
     const id_lawyer = router.query.id;  
+    const [imagen, setImagen] = useState({});
     const {getInfoLawyer,lawyer,departaments,specialties,experiences,id,attention} = useLawyer();
-    const image =  lawyer.photo.data ? lawyer.photo.data[0].attributes.url : Perfil.src ;       
-    // console.log(aux,"poto")
-    // console.log(aux)
-    const imageLoader = () => {
-    return `${API_IMG}${image}`
-}
+    
     useEffect(() => {
         getInfoLawyer(id_lawyer);
+    
     }, [])
+    useEffect(() => {
+    if (lawyer.photo && lawyer.photo.data && lawyer.photo.data.length > 0) {
+        const image = API_IMG+lawyer.photo.data[0].attributes.url;
+        setImagen(image)
+    } else {
+        const image = API_IMG+Perfil.src;
+    }
+    }, [lawyer]);
 
+    const imageLoader = () => {
+        return `${imagen}`
+    }
     return (
         <div className='mt-5 p-4'>
             <br />
@@ -36,7 +43,7 @@ const Lawyer = () => {
                         <small>Coliegiado Activo Nro: <spna className="text-stone-700">{lawyer.school_number}</spna></small>
                     </div>
                     <div className="text-center" >
-                        <Image loader={imageLoader} src={API_IMG+image} width="300" height="300" layout="responsive" style={{"maxHeight":"300px","objectFit":"cover","minHeight":"200px"}}  alt={lawyer.name} />
+                        <Image   loader={imageLoader} src={imagen} width="300" height="300" layout="responsive" style={{"maxHeight":"300px","objectFit":"cover","minHeight":"200px"}}  alt={lawyer.name} />
                         {/* <Image src={Perfil} width="300" height="300"  alt={lawyer.name} /> */}
                         <div className='my-3 text-white'>
 
